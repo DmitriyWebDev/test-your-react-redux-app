@@ -58,6 +58,18 @@
       "^.+\\.jsx?$": "babel-jest"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint-fix",
+      "npm run prettier",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.0",
