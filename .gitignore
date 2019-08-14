@@ -1,0 +1,29 @@
+# ide
+.idea/
+/.vscode
+.project
+*.sublime-project
+*.sublime-workspace
+.brackets.json
+_notes
+
+# build dependences
+node_modules/
+
+# test reports
+coverage/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+error_log
+
+# OS generated files
+[Tt]humbs.db
+ehthumbs.db
+*~
+.*~
+._*
+*.bak
+*.DS_Store
