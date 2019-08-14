@@ -9,10 +9,8 @@ const APP_DIR = path.join(__dirname, 'app');
 const BUILD_DIR = path.join(__dirname, 'build');
 
 module.exports = {
-  // START TS
-  entry: [APP_DIR + '/index.jsx'],
-  devtool: 'inline-source-map',
-  // END TS
+    entry: [APP_DIR + '/index.jsx'],
+    devtool: 'inline-source-map',
   output: {
     path: BUILD_DIR,
     filename: 'js/bundle.js',
