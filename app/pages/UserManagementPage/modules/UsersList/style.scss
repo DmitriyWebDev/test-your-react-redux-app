@@ -1,0 +1,27 @@
+.usersList {
+  display: block;
+  width: 100%;
+
+  &Item {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+
+    &__textWrap {
+      display: block;
+      width: calc(100% - 140px);
+      text-align: left;
+      padding: 5px 20px 5px 5px;
+    }
+
+    &__removeBtnWrap {
+      display: block;
+      max-width: 140px;
+      min-width: 140px;
+      padding: 0 10px 0 0;
+    }
+
+  }
+}

@@ -1,0 +1,22 @@
+.form {
+  display: block;
+  width: 100%;
+
+  &__content {
+    display: block;
+    width: 100%;
+  }
+
+  &__field {
+    display: block;
+    width: 100%;
+
+    &Label {
+
+    }
+
+    &Value {
+
+    }
+  }
+}

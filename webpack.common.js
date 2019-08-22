@@ -32,7 +32,6 @@ module.exports = {
             use: [
               {
                 loader: 'css-loader',
-                options: { alias: { '../img': '../public/img' } },
               },
               {
                 loader: 'postcss-loader',
@@ -82,6 +81,6 @@ module.exports = {
       inject: true,
       template: './public/index.html',
     }),
-    new CopyWebpackPlugin([{ from: './public/img', to: 'img' }], { copyUnmodified: false }),
+    new CopyWebpackPlugin([], { copyUnmodified: false }),
   ],
 };

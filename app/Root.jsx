@@ -1,4 +1,5 @@
 import React from 'react';
+import 'normalize.css';
 import './style.scss';
 import UserManagementPage from './pages/UserManagementPage';
 
