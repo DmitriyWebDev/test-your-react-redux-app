@@ -2,20 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '../../../../common/components/Input';
 import Button from '../../../../common/components/Button';
+import './style.scss';
+import { connect } from 'react-redux';
+import { addUser } from '../../redux-tools/actions';
+import { isFormDataValid } from '../../utils/utils';
+
+export const defaultState = {
+  firstName: '',
+  lastName: '',
+  position: '',
+};
 
 export class FormAddUser extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: 'Dmitriy',
-      lastName: 'Gavrilov',
-      position: 'Admin',
+      ...defaultState,
     };
 
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.handlePositionChange = this.handlePositionChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleFirstNameChange(firstName) {
@@ -30,8 +39,21 @@ export class FormAddUser extends React.Component {
     this.setState({ position });
   }
 
+  handleSubmit() {
+    const { addUser } = this.props;
+
+    if (isFormDataValid(this.state)) {
+      addUser(this.state);
+
+      this.setState(defaultState);
+    }
+  }
+
   render() {
     const { firstName, lastName, position } = this.state;
+    const isDataValid = isFormDataValid(this.state);
+
+    console.log(isDataValid);
 
     return (
       <div className={'form'}>
@@ -59,11 +81,18 @@ export class FormAddUser extends React.Component {
             </div>
           </div>
 
-          <Button>Add user</Button>
+          <Button disabled={!isDataValid} onClick={this.handleSubmit}>
+            Add user
+          </Button>
         </div>
       </div>
     );
   }
 }
 
-export default FormAddUser;
+export default connect(
+  () => ({}),
+  {
+    addUser,
+  },
+)(FormAddUser);

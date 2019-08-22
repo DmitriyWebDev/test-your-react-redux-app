@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getUsers } from './redux-tools/actions';
 import { UsersList } from './modules/UsersList';
-import { FormAddUser } from './modules/FormAddUser';
+import FormAddUser from './modules/FormAddUser';
 
 export class UserManagementPage extends React.Component {
   componentDidMount() {

@@ -2,6 +2,14 @@
   display: block;
   width: 100%;
 
+  &__title {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
+
   &Item {
     display: flex;
     flex-flow: row wrap;

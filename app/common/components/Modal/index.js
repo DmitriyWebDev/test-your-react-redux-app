@@ -4,7 +4,7 @@ import './style.scss';
 import PropTypes from 'prop-types';
 import ModalWrapperOverlay from './ModalWrapperOverlay';
 
-class Index extends React.Component {
+class Modal extends React.Component {
   render() {
     if (!this.props.isOpen) return null;
 
@@ -27,9 +27,9 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default Modal;
 
-Index.propTypes = {
+Modal.propTypes = {
   isOpen: PropTypes.bool,
   id: PropTypes.string,
   className: PropTypes.string,
@@ -39,7 +39,7 @@ Index.propTypes = {
   children: PropTypes.node,
 };
 
-Index.defaultProps = {
+Modal.defaultProps = {
   isOpen: false,
   id: '',
   className: '',

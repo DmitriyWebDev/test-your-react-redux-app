@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly, matches the snapshot 1`] = `
+<Index
+  className="class-1"
+  id="id-1"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="overlay-class-1"
+  shouldCloseOnOverlayClick={true}
+>
+  <Portal
+    containerInfo={
+      <body
+        style="overflow: hidden;"
+      >
+        <div
+          class="app-modal"
+        >
+          <div
+            class="app-modal__window-overlay-wrapper overlay-class-1"
+          >
+            <div
+              class="app-modal__window class-1"
+              id="id-1"
+            >
+              Modal window content
+            </div>
+          </div>
+        </div>
+      </body>
+    }
+  >
+    <div
+      className="app-modal"
+    >
+      <ModalWrapperOverlay
+        modalClassName="class-1"
+        modalId="id-1"
+        onRequestClose={[Function]}
+        overlayClassName="overlay-class-1"
+        shouldCloseOnOverlayClick={true}
+      >
+        <div
+          className="app-modal__window-overlay-wrapper overlay-class-1"
+          onClick={[Function]}
+        >
+          <div
+            className="app-modal__window class-1"
+            id="id-1"
+          >
+            Modal window content
+          </div>
+        </div>
+      </ModalWrapperOverlay>
+    </div>
+  </Portal>
+</Index>
+`;

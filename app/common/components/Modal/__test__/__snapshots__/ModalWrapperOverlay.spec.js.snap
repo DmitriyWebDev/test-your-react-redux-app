@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalWrapperOverlay renders correctly, matches the snapshot 1`] = `"<div class=\\"app-modal__window-overlay-wrapper\\"><div id=\\"\\" class=\\"app-modal__window\\"></div></div>"`;
