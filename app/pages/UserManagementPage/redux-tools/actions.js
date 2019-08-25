@@ -1,16 +1,17 @@
-export const USER_MANAGEMENT = 'USER_MANAGEMENT_';
-export const ADD_USER = 'ADD_USER_';
+import { request } from './api';
 
-import { HTTP_METHODS, requestWithFetch } from '../../../common/rest/rest';
+export const START = 'START';
+export const SUCCESS = 'SUCCESS';
+export const FAIL = 'FAIL';
+export const REQUEST_CREATE_USER = 'REQUEST_CREATE_USER_';
 
-export const getUsers = params => dispatch => {
-  // return requestWithFetch('', HTTP_METHODS.GET)
-  //   .then(res => {
-  //     console.log(res);
-  //   })
-  //   .catch(err => console.log(err));
-};
-
-export const addUser = userData => dispatch => {
-  console.log('Add user');
+export const createNewUser = (userData = {}) => dispatch => {
+  dispatch({ type: REQUEST_CREATE_USER + START });
+  return request('/create-user', 'POST', userData)(dispatch)
+    .then(userData => {
+      dispatch({ type: REQUEST_CREATE_USER + SUCCESS, userData });
+    })
+    .catch(error => {
+      dispatch({ type: REQUEST_CREATE_USER + FAIL, error });
+    });
 };
