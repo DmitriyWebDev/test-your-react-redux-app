@@ -59,4 +59,5 @@ ModalWrapperOverlay.defaultProps = {
   overlayClassName: '',
   onRequestClose: () => {},
   shouldCloseOnOverlayClick: true,
+  children: <span>Modal window default content</span>,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ModalWrapperOverlay from '../ModalWrapperOverlay';
 
 const modalWindowClassName = 'app-modal__window';
@@ -7,8 +7,15 @@ const modalWindowOverlayClassName = 'app-modal__window-overlay-wrapper';
 
 describe('ModalWrapperOverlay', () => {
   it('renders correctly, matches the snapshot', () => {
-    const output = mount(<ModalWrapperOverlay />);
-    expect(output.html()).toMatchSnapshot();
+    const output = shallow(
+      <ModalWrapperOverlay
+        modalId={'id-1'}
+        modalClassName={'class-1'}
+        overlayClassName={'overlay-class-1'}
+        shouldCloseOnOverlayClick={true}
+      />,
+    );
+    expect(output).toMatchSnapshot();
   });
 
   /** Tests on logic */

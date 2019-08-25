@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModalWrapperOverlay renders correctly, matches the snapshot 1`] = `"<div class=\\"app-modal__window-overlay-wrapper\\"><div id=\\"\\" class=\\"app-modal__window\\"></div></div>"`;
+exports[`ModalWrapperOverlay renders correctly, matches the snapshot 1`] = `
+<div
+  className="app-modal__window-overlay-wrapper overlay-class-1"
+  onClick={[Function]}
+>
+  <div
+    className="app-modal__window class-1"
+    id="id-1"
+  >
+    <span>
+      Modal window default content
+    </span>
+  </div>
+</div>
+`;
