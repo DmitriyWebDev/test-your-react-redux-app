@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import globalReducer from '../common/redux-tools/globalReducer';
+import userManagementPageReducer from '../../app/pages/UserManagementPage/redux-tools/reducer';
 
 export default () =>
   combineReducers({
-    global: globalReducer,
+    userManagement: userManagementPageReducer,
   });

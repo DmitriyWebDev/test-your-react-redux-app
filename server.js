@@ -6,7 +6,7 @@ const port = 3001;
 const app = express();
 
 app.use(function(req, res, next) {
-  const origins = ['http://localhost:4444'];
+  const origins = ['http://localhost:5001'];
 
   for (let i = 0; i < origins.length; i++) {
     const origin = origins[i];
@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.json());
-app.use('/v1.0/', serverApi);
+app.use(serverApi);
 
 app.listen(port, 'localhost', function(err) {
   if (err) {

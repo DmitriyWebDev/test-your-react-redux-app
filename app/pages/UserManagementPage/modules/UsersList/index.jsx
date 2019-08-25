@@ -1,27 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
-import Button from '../../../../common/components/Button';
+import UsersListItem from './UsersListItem';
+import { userShape } from '../../../../common/constants';
 
 export const UsersList = props => {
-  const { users } = props;
+  const { users, deleteUser } = props;
 
   return (
     <div className={'usersList'}>
       <div className={'usersList__title'}>User list</div>
 
-      {users.map(({ id, name, surname, position }) => {
+      {users.map(({ id, firstName, lastName, position }) => {
         return (
-          <div className={'usersListItem'} key={id}>
-            <div className={'usersListItem__textWrap'}>
-              Name: {name} <br />
-              Surname: {surname} <br />
-              Position: {position}
-            </div>
-            <div className={'usersListItem__removeBtnWrap'}>
-              <Button>Remove user</Button>
-            </div>
-          </div>
+          <UsersListItem
+            key={id}
+            userData={{
+              id,
+              firstName,
+              lastName,
+              position,
+            }}
+            deleteUser={deleteUser}
+          />
         );
       })}
     </div>
@@ -31,28 +32,10 @@ export const UsersList = props => {
 export default UsersList;
 
 UsersList.propTypes = {
-  users: PropTypes.array,
+  users: PropTypes.arrayOf(userShape),
+  deleteUser: PropTypes.func.isRequired,
 };
 
 UsersList.defaultProps = {
-  users: [
-    {
-      id: '1',
-      name: 'Name 1',
-      surname: 'Surname',
-      position: 'position',
-    },
-    {
-      id: '2',
-      name: 'Name 2',
-      surname: 'Surname',
-      position: 'position',
-    },
-    {
-      id: '3',
-      name: 'Name 3',
-      surname: 'Surname',
-      position: 'position',
-    },
-  ],
+  users: [],
 };

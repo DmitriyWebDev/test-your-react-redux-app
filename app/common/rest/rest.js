@@ -1,5 +1,3 @@
-import { FAIL, SUCCESS } from '../constants';
-
 export const HTTP_METHODS = {
   GET: 'GET',
   POST: 'POST',
@@ -7,19 +5,26 @@ export const HTTP_METHODS = {
   DELETE: 'DELETE',
 };
 
-export function requestWithFetch(url = '', method = HTTP_METHODS.GET, data = {}) {
+export const HOST = process.env.HOST || 'http://localhost:3001';
+
+export function request(url = '', httpMethod = HTTP_METHODS.GET, data = {}) {
+  const requestParams = {
+    method: httpMethod,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  if (httpMethod !== HTTP_METHODS.GET) {
+    requestParams.body = JSON.stringify(data);
+  }
+
   return new Promise((resolve, reject) => {
-    fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(`${HOST}${url}`, requestParams)
       .then(res => res.json())
-      .then(response => {
-        resolve(response);
-      })
+      .then(response => resolve(response))
       .catch(error => {
+        console.error(error);
         reject(error);
       });
   });

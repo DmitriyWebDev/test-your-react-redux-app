@@ -1,3 +1,13 @@
-export const START = 'START_';
-export const SUCCESS = 'SUCCESS_';
-export const FAIL = 'FAIL_';
+import PropTypes from 'prop-types';
+
+export const START = 'START';
+export const SUCCESS = 'SUCCESS';
+export const FAIL = 'FAIL';
+export const RESET = 'RESET';
+
+export const userShape = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+});

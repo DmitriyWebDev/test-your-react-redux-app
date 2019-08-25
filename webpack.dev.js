@@ -11,10 +11,9 @@ module.exports = merge(common, {
   devServer: {
     inline: true,
     contentBase: BUILD_DIR,
-    port: 4444,
+    port: 5001,
     proxy: [
       {
-        context: ['/v1.0'],
         target: host,
         secure: false,
         changeOrigin: true,

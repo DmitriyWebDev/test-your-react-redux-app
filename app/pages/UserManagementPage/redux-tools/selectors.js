@@ -1,18 +1,52 @@
 import { createSelector } from 'reselect';
 
-export const userRootSelector = state => state.userInfo;
+export const userManagementRootSelector = state => state.userManagement;
 
-export const userDataIsLoadingSelector = createSelector(
-  userRootSelector,
-  state => state && state.isLoading,
+// users list
+export const userManagementUsersListIsLoadingSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.usersListIsLoading),
 );
 
-export const userDataDetailSelector = createSelector(
-  userRootSelector,
-  state => state && state.user,
+export const userManagementUsersListIsLoadedSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.usersListIsLoaded),
 );
 
-export const userDataNameSelector = createSelector(
-  userDataDetailSelector,
-  state => state && state.name,
+export const userManagementUsersListSelector = createSelector(
+  userManagementRootSelector,
+  state => (state && state.usersList) || [],
+);
+
+// user addition
+export const userManagementUserAdditionIsLoadingSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.userAdditionIsLoading),
+);
+
+export const userManagementUserAdditionIsLoadedSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.userAdditionIsLoaded),
+);
+
+// user deleting
+export const userManagementUserDeletingIsLoadingSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.userDeletingIsLoading),
+);
+
+export const userManagementUserDeletingIsLoadedSelector = createSelector(
+  userManagementRootSelector,
+  state => Boolean(state && state.userDeletingIsLoaded),
+);
+
+// common
+export const userManagementPageIsLoadingSelector = createSelector(
+  [
+    userManagementUsersListIsLoadingSelector,
+    userManagementUserAdditionIsLoadingSelector,
+    userManagementUserDeletingIsLoadingSelector,
+  ],
+  (usersListIsLoading, userAdditionIsLoading, userDeletingIsLoading) =>
+    Boolean(usersListIsLoading || userAdditionIsLoading || userDeletingIsLoading),
 );

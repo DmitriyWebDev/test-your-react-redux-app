@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import Input from '../../../../common/components/Input';
 import Button from '../../../../common/components/Button';
 import './style.scss';
-import { connect } from 'react-redux';
-import { addUser } from '../../redux-tools/actions';
 import { isFormDataValid } from '../../utils/utils';
 
 export const defaultState = {
@@ -53,8 +51,6 @@ export class FormAddUser extends React.Component {
     const { firstName, lastName, position } = this.state;
     const isDataValid = isFormDataValid(this.state);
 
-    console.log(isDataValid);
-
     return (
       <div className={'form'}>
         <div className={'form__title'}>Users form</div>
@@ -90,9 +86,8 @@ export class FormAddUser extends React.Component {
   }
 }
 
-export default connect(
-  () => ({}),
-  {
-    addUser,
-  },
-)(FormAddUser);
+export default FormAddUser;
+
+FormAddUser.propTypes = {
+  addUser: PropTypes.func.isRequired,
+};

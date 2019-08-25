@@ -16,13 +16,22 @@
 
   &__header {
     display: block;
+    position: relative;
     width: 100%;
     text-align: center;
     font-size: 20px;
-    padding: 20px;
+    padding: 20px 100px;
     border: 1px solid #E6E6E6;
     background: white;
     margin: 15px 0 15px 0;
+
+    &Loader {
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   &__content {
