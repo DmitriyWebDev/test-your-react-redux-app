@@ -48,7 +48,7 @@ describe('ModalWrapperOverlay', () => {
 
   // Test events handling
 
-  it('check the onRequestClose call', () => {
+  it('check props onRequestClose call', () => {
     const onRequestClose = jest.fn();
     const props = {
       onRequestClose,
