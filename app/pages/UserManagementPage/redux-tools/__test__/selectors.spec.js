@@ -1,36 +1,27 @@
 import expect from 'expect';
 import {
-  userRootSelector,
-  userDataIsLoadingSelector,
-  userDataDetailSelector,
-  userDataNameSelector,
+  userManagementRootSelector,
+  userManagementUsersListIsLoadingSelector,
+  userManagementUsersListSelector,
 } from '../selectors';
 
-describe('User selectors tests', () => {
-  const userInfoKey = 'userInfo';
-  const initialState = {
-    [userInfoKey]: {
-      isLoading: false,
-      user: {
-        name: 'user name',
-      },
+describe('UserManagement selectors tests', () => {
+  const reduxStore = {
+    userManagement: {
+      usersListIsLoading: false,
+      usersList: [1, 2, 3],
     },
   };
-  const userInfo = initialState[userInfoKey];
 
-  it('userRootSelector()', () => {
-    expect(userRootSelector(initialState)).toEqual(userInfo);
+  it('userManagementRootSelector()', () => {
+    expect(userManagementRootSelector(reduxStore)).toEqual(reduxStore.userManagement);
   });
 
-  it('userDataIsLoadingSelector()', () => {
-    expect(userDataIsLoadingSelector(initialState)).toBe(userInfo.isLoading);
+  it('userManagementUsersListIsLoadingSelector()', () => {
+    expect(userManagementUsersListIsLoadingSelector(reduxStore)).toBe(reduxStore.userManagement.usersListIsLoading);
   });
 
-  it('userDataDetailSelector()', () => {
-    expect(userDataDetailSelector(initialState)).toEqual(userInfo.user);
-  });
-
-  it('userDataNameSelector()', () => {
-    expect(userDataNameSelector(initialState)).toEqual(userInfo.user.name);
+  it('userManagementUsersListSelector()', () => {
+    expect(userManagementUsersListSelector(reduxStore)).toEqual(reduxStore.userManagement.usersList);
   });
 });

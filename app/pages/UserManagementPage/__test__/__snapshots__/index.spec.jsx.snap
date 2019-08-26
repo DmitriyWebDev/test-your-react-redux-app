@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserManagementPage component should render correctly 1`] = `
+<div
+  className="userManagementPage"
+>
+  <div
+    className="userManagementPage__contentWrap"
+  >
+    <div
+      className="userManagementPage__header"
+    >
+      User management page
+    </div>
+    <div
+      className="userManagementPage__content"
+    >
+      <div
+        className="userManagementPage__section"
+      >
+        <div
+          className="userManagementPage__sectionContent"
+        >
+          <UsersList
+            deleteUser={[Function]}
+            disabled={false}
+            users={Array []}
+          />
+        </div>
+      </div>
+      <div
+        className="userManagementPage__section"
+      >
+        <div
+          className="userManagementPage__sectionContent"
+        >
+          <FormAddUser
+            addUser={[Function]}
+            disabled={false}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

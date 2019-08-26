@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormAddUser component should render correctly 1`] = `
+<div
+  className="form"
+>
+  <div
+    className="form__title"
+  >
+    Users form
+  </div>
+  <div
+    className="form__content"
+  >
+    <div
+      className="form__field"
+    >
+      <div
+        className="form__fieldLabel"
+      >
+        Name
+      </div>
+      <div
+        className="form__fieldValue"
+      >
+        <Input
+          className=""
+          id=""
+          name="firstName"
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form__field"
+    >
+      <div
+        className="form__fieldLabel"
+      >
+        Surname
+      </div>
+      <div
+        className="form__fieldValue"
+      >
+        <Input
+          className=""
+          id=""
+          name="lastName"
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form__field"
+    >
+      <div
+        className="form__fieldLabel"
+      >
+        Position
+      </div>
+      <div
+        className="form__fieldValue"
+      >
+        <Input
+          className=""
+          id=""
+          name="position"
+          onChange={[Function]}
+          placeholder=""
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <Button
+      className=""
+      disabled={true}
+      id=""
+      onClick={[Function]}
+    >
+      Add user
+    </Button>
+  </div>
+</div>
+`;

@@ -8,11 +8,6 @@ export const userManagementUsersListIsLoadingSelector = createSelector(
   state => Boolean(state && state.usersListIsLoading),
 );
 
-export const userManagementUsersListIsLoadedSelector = createSelector(
-  userManagementRootSelector,
-  state => Boolean(state && state.usersListIsLoaded),
-);
-
 export const userManagementUsersListSelector = createSelector(
   userManagementRootSelector,
   state => (state && state.usersList) || [],

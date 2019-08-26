@@ -1,44 +1,62 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import expect from 'expect';
+import { START, SUCCESS, FAIL, RESET } from '../../../../common/constants';
+import { USER_MANAGEMENT, REQUEST_USERS_LIST, resetPageData, getUsersList } from '../actions';
 
-import { createNewUser, REQUEST_CREATE_USER, START, SUCCESS, FAIL } from '../actions';
-
-import * as api from '../api';
+import * as rest from '../../../../common/rest/rest';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('UserService.', () => {
-  it(`createNewUser. Success`, async () => {
-    const userData = { id: '111' };
-    const expectedActions = [{ type: REQUEST_CREATE_USER + START }, { type: REQUEST_CREATE_USER + SUCCESS, userData }];
+describe('UserManagementPage actions.', () => {
+  // Test SYNC action creator
+  it(`resetPageData()`, () => {
+    const expectedActions = [{ type: USER_MANAGEMENT + RESET }];
     const store = mockStore({});
 
-    api.request = jest.fn();
-    api.request.mockImplementation(() => () =>
-      new Promise(resolve => {
-        resolve(userData);
-      }),
-    );
-
-    await store.dispatch(createNewUser());
+    store.dispatch(resetPageData());
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  it(`createNewUser. Error`, async () => {
-    const error = 'some error';
-    const expectedActions = [{ type: REQUEST_CREATE_USER + START }, { type: REQUEST_CREATE_USER + FAIL, error }];
+  // Test ASYNC action creator
+  it(`getUsersList(). Success`, async () => {
+    const users = [1, 2, 3];
+    const expectedActions = [
+      { type: USER_MANAGEMENT + REQUEST_USERS_LIST + START },
+      { type: USER_MANAGEMENT + REQUEST_USERS_LIST + SUCCESS, payload: { users } },
+    ];
     const store = mockStore({});
 
-    api.request = jest.fn();
-    api.request.mockImplementation(() => () =>
-      new Promise((resolve, reject) => {
-        reject(error);
-      }),
+    rest.request = jest.fn();
+    rest.request.mockImplementation(
+      () =>
+        new Promise(resolve => {
+          resolve(users);
+        }),
     );
 
-    await store.dispatch(createNewUser());
+    await store.dispatch(getUsersList());
+    expect(store.getActions()).toEqual(expectedActions);
+  });
+
+  it(`getUsersList(). Error`, async () => {
+    const error = 'some error';
+    const expectedActions = [
+      { type: USER_MANAGEMENT + REQUEST_USERS_LIST + START },
+      { type: USER_MANAGEMENT + REQUEST_USERS_LIST + FAIL, payload: { error } },
+    ];
+    const store = mockStore({});
+
+    rest.request = jest.fn();
+    rest.request.mockImplementation(
+      () =>
+        new Promise((resolve, reject) => {
+          reject(error);
+        }),
+    );
+
+    await store.dispatch(getUsersList());
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

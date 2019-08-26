@@ -1,56 +1,29 @@
 import expect from 'expect';
-import { REQUEST_CREATE_USER, START, SUCCESS, FAIL } from '../actions';
-import { initialState, userReducer } from '../reducer';
+import { SUCCESS } from '../../../../common/constants';
+import { USER_MANAGEMENT, REQUEST_USERS_LIST } from '../actions';
+import reducer, { initialState } from '../reducer';
 
-describe('User reducer tests', () => {
-  it(`${REQUEST_CREATE_USER}${START}`, () => {
+describe('UserManagement reducer tests', () => {
+  it(`${USER_MANAGEMENT}${REQUEST_USERS_LIST}${SUCCESS}`, () => {
     const action = {
-      type: `${REQUEST_CREATE_USER}${START}`,
+      type: `${USER_MANAGEMENT}${REQUEST_USERS_LIST}${SUCCESS}`,
+      payload: {
+        users: [1, 2, 3],
+      },
     };
-    /** Лучше задавать явно значения полей стора для достоверности тестов */
+
     const state = {
       ...initialState,
-      userIsLoading: false,
+      usersListIsLoading: true,
+      usersListIsLoaded: false,
+      usersList: [0, 0, 0],
     };
 
-    expect(userReducer(state, action)).toEqual({
+    expect(reducer(state, action)).toEqual({
       ...state,
-      userIsLoading: true,
-    });
-  });
-
-  it(`${REQUEST_CREATE_USER}${SUCCESS}`, () => {
-    const userData = { id: 7 };
-    const action = {
-      type: `${REQUEST_CREATE_USER}${SUCCESS}`,
-      userData,
-    };
-    const state = {
-      ...initialState,
-      userIsLoading: true,
-      user: false,
-    };
-
-    expect(userReducer(state, action)).toEqual({
-      ...state,
-      userIsLoading: false,
-      user: action.userData,
-    });
-  });
-
-  it(`${REQUEST_CREATE_USER}${FAIL}`, () => {
-    const action = {
-      type: `${REQUEST_CREATE_USER}${FAIL}`,
-    };
-    /** Лучше задавать явно значения полей стора для достоверности тестов */
-    const state = {
-      ...initialState,
-      userIsLoading: true,
-    };
-
-    expect(userReducer(state, action)).toEqual({
-      ...state,
-      userIsLoading: false,
+      usersListIsLoading: false,
+      usersListIsLoaded: true,
+      usersList: action.payload.users,
     });
   });
 });

@@ -6,6 +6,10 @@ export const REQUEST_USERS_LIST = 'REQUEST_USERS_LIST_';
 export const REQUEST_ADD_USER = 'REQUEST_ADD_USER_';
 export const REQUEST_DELETE_USER = 'REQUEST_DELETE_USER_';
 
+// Sync action creator
+export const resetPageData = () => ({ type: USER_MANAGEMENT + RESET });
+
+// Async action creator
 export const getUsersList = () => dispatch => {
   dispatch({ type: USER_MANAGEMENT + REQUEST_USERS_LIST + START });
   return request('/users', HTTP_METHODS.GET)
@@ -16,10 +20,11 @@ export const getUsersList = () => dispatch => {
       });
     })
     .catch(error => {
-      dispatch({ type: USER_MANAGEMENT + REQUEST_USERS_LIST + FAIL, error });
+      dispatch({ type: USER_MANAGEMENT + REQUEST_USERS_LIST + FAIL, payload: { error } });
     });
 };
 
+// Async action creator
 export const addUser = (userData = {}) => dispatch => {
   dispatch({ type: USER_MANAGEMENT + REQUEST_ADD_USER + START });
   return request('/add-user', HTTP_METHODS.POST, userData)
@@ -31,6 +36,7 @@ export const addUser = (userData = {}) => dispatch => {
     });
 };
 
+// Async action creator
 export const deleteUser = (userId = '') => dispatch => {
   dispatch({ type: USER_MANAGEMENT + REQUEST_DELETE_USER + START });
   return request('/delete-user', HTTP_METHODS.DELETE, { userId })
@@ -41,5 +47,3 @@ export const deleteUser = (userId = '') => dispatch => {
       dispatch({ type: USER_MANAGEMENT + REQUEST_DELETE_USER + FAIL, error });
     });
 };
-
-export const resetPageData = () => ({ type: USER_MANAGEMENT + RESET });
