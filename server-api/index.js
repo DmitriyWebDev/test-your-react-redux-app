@@ -18,7 +18,7 @@ const { getRandomId } = require('./utils');
 router.get('/users', function(req, res, next) {
   setTimeout(() => {
     res.json(serverData.users);
-  }, 0); // timeout for dev only!!!
+  }, 500); // timeout for dev only!!!
 });
 
 router.post('/add-user', function(req, res, next) {

@@ -38,9 +38,9 @@ export class FormAddUser extends React.Component {
   }
 
   handleSubmit() {
-    const { addUser } = this.props;
+    const { addUser, disabled } = this.props;
 
-    if (isFormDataValid(this.state)) {
+    if (!disabled && isFormDataValid(this.state)) {
       addUser(this.state);
 
       this.setState(defaultState);
@@ -48,6 +48,7 @@ export class FormAddUser extends React.Component {
   }
 
   render() {
+    const { disabled } = this.props;
     const { firstName, lastName, position } = this.state;
     const isDataValid = isFormDataValid(this.state);
 
@@ -77,7 +78,7 @@ export class FormAddUser extends React.Component {
             </div>
           </div>
 
-          <Button disabled={!isDataValid} onClick={this.handleSubmit}>
+          <Button disabled={!isDataValid || disabled} onClick={this.handleSubmit}>
             Add user
           </Button>
         </div>
@@ -90,4 +91,9 @@ export default FormAddUser;
 
 FormAddUser.propTypes = {
   addUser: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+};
+
+FormAddUser.defaultProps = {
+  disabled: false,
 };

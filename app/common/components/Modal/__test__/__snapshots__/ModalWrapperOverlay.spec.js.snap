@@ -6,7 +6,7 @@ exports[`ModalWrapperOverlay renders correctly, matches the snapshot 1`] = `
   onClick={[Function]}
 >
   <div
-    className="app-modal__window class-1"
+    className="app-modal__window app-modal__window_vertical-centering class-1"
     id="id-1"
   >
     <span>

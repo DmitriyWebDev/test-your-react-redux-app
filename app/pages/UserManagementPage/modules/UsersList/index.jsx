@@ -5,7 +5,7 @@ import UsersListItem from './UsersListItem';
 import { userShape } from '../../../../common/constants';
 
 export const UsersList = props => {
-  const { users, deleteUser } = props;
+  const { users, deleteUser, disabled } = props;
 
   return (
     <div className={'usersList'}>
@@ -22,6 +22,7 @@ export const UsersList = props => {
               position,
             }}
             deleteUser={deleteUser}
+            disabled={disabled}
           />
         );
       })}
@@ -34,8 +35,10 @@ export default UsersList;
 UsersList.propTypes = {
   users: PropTypes.arrayOf(userShape),
   deleteUser: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 UsersList.defaultProps = {
   users: [],
+  disabled: false,
 };

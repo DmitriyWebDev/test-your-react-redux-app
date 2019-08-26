@@ -51,13 +51,13 @@ export class UserManagementPage extends React.Component {
           <div className={'userManagementPage__content'}>
             <div className={'userManagementPage__section'}>
               <div className={'userManagementPage__sectionContent'}>
-                <UsersList users={usersList} deleteUser={deleteUser} />
+                <UsersList users={usersList} deleteUser={deleteUser} disabled={pageIsLoading} />
               </div>
             </div>
 
             <div className={'userManagementPage__section'}>
               <div className={'userManagementPage__sectionContent'}>
-                <FormAddUser addUser={addUser} />
+                <FormAddUser addUser={addUser} disabled={pageIsLoading} />
               </div>
             </div>
           </div>

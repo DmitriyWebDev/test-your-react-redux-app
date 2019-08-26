@@ -2,6 +2,7 @@ import './style.scss';
 import React, { Component } from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
+import { stopEventPropagation } from '../../utils/utils';
 
 export default class Button extends Component {
   constructor(props) {
@@ -10,7 +11,9 @@ export default class Button extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick(e) {
+    stopEventPropagation(e);
+
     const { disabled, onClick } = this.props;
 
     if (!disabled) onClick();

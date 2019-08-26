@@ -34,7 +34,11 @@ class ModalWrapperOverlay extends React.Component {
 
     return (
       <div className={cn('app-modal__window-overlay-wrapper', overlayClassName)} onClick={this.handleOverlayClick}>
-        <div id={modalId} className={cn('app-modal__window', modalClassName)} ref={this.modalContentRef}>
+        <div
+          id={modalId}
+          className={cn('app-modal__window', 'app-modal__window_vertical-centering', modalClassName)}
+          ref={this.modalContentRef}
+        >
           {children}
         </div>
       </div>

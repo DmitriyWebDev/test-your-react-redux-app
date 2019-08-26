@@ -17,6 +17,8 @@
     justify-content: space-between;
     border: 1px solid black;
     margin: 0 0 15px 0;
+    padding: 10px;
+    cursor: pointer;
 
     &__textWrap {
       display: block;
@@ -32,5 +34,27 @@
       padding: 0 10px 0 0;
     }
 
+    &__modalBlock {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: start;
+      justify-content: center;
+      padding: 20px;
+
+      &Header {
+        display: block;
+        width: 100%;
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      &Text {
+        display: block;
+        width: 100%;
+        text-align: left;
+        font-size: 20px;
+      }
+    }
   }
 }
