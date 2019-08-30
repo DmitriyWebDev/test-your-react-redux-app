@@ -30,7 +30,7 @@ class Modal extends React.Component {
 export default Modal;
 
 Modal.propTypes = {
-  isOpen: PropTypes.bool, // открыто ли модальное коно
+  isOpen: PropTypes.bool, // открыто ли модальное окно
   id: PropTypes.string, //  id модального окна
   className: PropTypes.string, // css - класс модального окна
   overlayClassName: PropTypes.string, // css - класс оверлея модального окна
